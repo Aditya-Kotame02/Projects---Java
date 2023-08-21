@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+// Define a Calculator interface
+interface Calculator {
+    double add(double a, double b);
+    double subtract(double a, double b);
+    double multiply(double a, double b);
+    double divide(double a, double b);
+}
+
+// Create a CalculatorImpl class that implements the Calculator interface
+class CalculatorImpl implements Calculator {
+    @Override
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    @Override
+    public double subtract(double a, double b) {
+        return a - b;
+    }
+
+    @Override
+    public double multiply(double a, double b) {
+        return a * b;
+    }
+
+    @Override
+    public double divide(double a, double b) {
+        if (b == 0) {
+            System.out.println("Cannot divide by zero.");
+            return Double.NaN; // Not-a-Number
+        }
+        return a / b;
+    }
+}
+
+public class BasicCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Calculator calculator = new CalculatorImpl();
+
+        System.out.println("Basic Calculator");
+        System.out.print("Enter first number: ");
+        double num1 = scanner.nextDouble();
+        System.out.print("Enter second number: ");
+        double num2 = scanner.nextDouble();
+
+        System.out.println("Select operation:");
+        System.out.println("1. Add");
+        System.out.println("2. Subtract");
+        System.out.println("3. Multiply");
+        System.out.println("4. Divide");
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+
+        double result = 0;
+        switch (choice) {
+            case 1:
+                result = calculator.add(num1, num2);
+                break;
+            case 2:
+                result = calculator.subtract(num1, num2);
+                break;
+            case 3:
+                result = calculator.multiply(num1, num2);
+                break;
+            case 4:
+                result = calculator.divide(num1, num2);
+                break;
+            default:
+                System.out.println("Invalid choice.");
+        }
+
+        System.out.println("Result: " + result);
+        scanner.close();
+    }
+}
