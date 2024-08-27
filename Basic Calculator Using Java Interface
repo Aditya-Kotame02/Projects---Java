@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-// Define a Calculator interface
 interface Calculator {
     double add(double a, double b);
     double subtract(double a, double b);
@@ -8,7 +7,6 @@ interface Calculator {
     double divide(double a, double b);
 }
 
-// Create a CalculatorImpl class that implements the Calculator interface
 class CalculatorImpl implements Calculator {
     @Override
     public double add(double a, double b) {
